@@ -34,7 +34,7 @@ function getProxyConfig() {
 		 * @param {import('http').ServerResponse} res
 		 */
 		onProxyReq: (proxyReq, req, res) => {
-			const contentType = proxyReq.getHeader('Content-Type');
+			proxyReq.setHeader('user-agent', 'Aikos Proxy');
 			/**
 			 * @type {null | undefined | object}
 			 */
@@ -45,7 +45,7 @@ function getProxyConfig() {
 			if (!body || !Object.keys(body).length) {
 				return;
 			}
-			proxyReq.setHeader('user-agent', 'Aikos Proxy');
+			const contentType = proxyReq.getHeader('Content-Type');
 			let contentTypeStr = Array.isArray(contentType) ? contentType[0] : contentType.toString();
 			// Grab 'application/x-www-form-urlencoded' out of 'application/x-www-form-urlencoded; charset=utf-8'
 			contentTypeStr = contentTypeStr.match(/^([^;]*)/)[1];
