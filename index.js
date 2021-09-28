@@ -45,6 +45,7 @@ function getProxyConfig() {
 				return;
 			}
 			const contentType = proxyReq.getHeader('Content-Type');
+			proxyReq.setHeader('user-agent', 'Aikos Proxy');
 			let contentTypeStr = Array.isArray(contentType) ? contentType[0] : contentType.toString();
 			// Grab 'application/x-www-form-urlencoded' out of 'application/x-www-form-urlencoded; charset=utf-8'
 			contentTypeStr = contentTypeStr.match(/^([^;]*)/)[1];
