@@ -1,3 +1,3 @@
 module.exports = {
-	destination: 'https://postb.in/123-456'
+	destination: 'https://discord.com/api/v8'
 }
